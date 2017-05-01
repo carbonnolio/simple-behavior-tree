@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace SimpleBehaviorTree
 {
-    public class TreeManager : ITreeManager
+    public class TreeManager
     {
         private Branch _rootNode;
 
         public TreeManager(ITreeNode node)
         {
-            if (node == null) throw new ArgumentNullException();
+            if (node == null) throw new ArgumentNullException("Root node cannot be null.");
 
             node.OnNodeType(() =>
             {
@@ -34,7 +34,7 @@ namespace SimpleBehaviorTree
 
         internal static TOperation ProcessBranch(Branch branch)
         {
-            if (!branch.IsValid()) throw new ArgumentException();
+            if (!branch.IsValid()) throw new ArgumentException("Branch cannot be null and must have at least one child.");
 
             var result = default(TOperation);
 
@@ -55,7 +55,7 @@ namespace SimpleBehaviorTree
 
         internal static TOperation ProcessNode(ITreeNode node)
         {
-            if (node == null) throw new ArgumentNullException();
+            if (node == null) throw new ArgumentNullException("Node cannot be null.");
 
             var result = default(TOperation);
 
@@ -73,7 +73,7 @@ namespace SimpleBehaviorTree
         // Root branch will default to selector type if its not provided.
         private static Branch CreateRootBranch(Leaf leaf, TBranch branchType = TBranch.Selector)
         {
-            if (leaf == null) throw new ArgumentNullException();
+            if (leaf == null) throw new ArgumentNullException("Node cannot be null.");
 
             Branch root = new Branch(branchType);
             root.Children.Enqueue(leaf);

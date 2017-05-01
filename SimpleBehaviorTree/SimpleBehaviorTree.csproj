@@ -44,7 +44,6 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Extensions\BranchExtensions.cs" />
     <Compile Include="Extensions\NodeExtensions.cs" />
-    <Compile Include="Interfaces\ITreeManager.cs" />
     <Compile Include="Interfaces\ITreeNode.cs" />
     <Compile Include="Leaf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

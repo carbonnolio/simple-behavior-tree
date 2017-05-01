@@ -22,7 +22,7 @@ namespace SimpleBehaviorTree
 
         public Branch AddNode(ITreeNode node)
         {
-            if (node == null) throw new ArgumentNullException();
+            if (node == null) throw new ArgumentNullException("Node cannot be null.");
 
             _children.Enqueue(node);
 
